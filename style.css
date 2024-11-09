@@ -1,0 +1,33 @@
+body {
+	margin: 0;
+	background-color:hsl(261, 18%, 15%);
+	color: white;
+	overflow: hidden;
+	font: 20px Arial;
+}
+
+#pausebutton {
+	position: absolute;
+	cursor: pointer;
+	top: 20px;
+	left: 20px;
+	width: 50px;
+}
+
+#ffbutton {
+	position: absolute;
+	cursor: pointer;
+	top: 90px;
+	left: 20px;
+	width: 50px;
+}
+
+#control {
+	position: absolute;
+	right: 25px;
+	top: 25px;
+	padding: 20px 30px;
+	border-radius: 10px;
+	background-color: #0008;
+	text-align: center;
+}
