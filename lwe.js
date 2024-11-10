@@ -76,12 +76,23 @@ document.getElementById("switchbasis").addEventListener("change", () => {
 	reEstimate();
 	document.getElementById("basistext").innerText = `Current Basis: u1=(${b[0].x},${b[0].y}), u2=(${b[1].x},${b[1].y})`;
 });
-
-c.addEventListener("click", e => {
+let hold = false;
+c.addEventListener("mousedown", e => {
+	hold = true;
 	v.x = (e.offsetX / innerWidth - 0.5) * 46;
 	v.y = ((innerHeight / 2 - e.offsetY) / innerWidth) * 46;
 	reEstimate();
 	document.getElementById("vtext").innerText = `Current Vector: v=(${v.x.toFixed(2)},${v.y.toFixed(2)})`;
+});
+c.addEventListener("mousemove", e => {
+	if (!hold) return;
+	v.x = (e.offsetX / innerWidth - 0.5) * 46;
+	v.y = ((innerHeight / 2 - e.offsetY) / innerWidth) * 46;
+	reEstimate();
+	document.getElementById("vtext").innerText = `Current Vector: v=(${v.x.toFixed(2)},${v.y.toFixed(2)})`;
+});
+c.addEventListener("mouseup", e => {
+	hold = false;
 });
 
 function render() {
@@ -101,11 +112,12 @@ function render() {
 	canvas_arrow(ctx, 0, 0, b[0].x, b[0].y);
 	ctx.strokeStyle = "#66f";
 	canvas_arrow(ctx, 0, 0, b[1].x, b[1].y);
-	for (let i = -101; i < 102; i++) {
-		for (let j = -101; j < 102; j++) {
-			const {x, y} = b[0].mul(i).add(b[1].mul(j));
-			i1 = Math.sin(i/10*3.14) * 125 + 125;
-			i2 = Math.sin(j/10*3.14) * 125 + 125;
+	for (let i = -12; i < 13; i++) {
+		for (let j = -12; j < 13; j++) {
+			const {x, y} = b1[0].mul(i).add(b1[1].mul(j));
+			const vEst = m.inv().mul(new Vec2(x, y));
+			i1 = Math.sin(vEst.x/10*3.14) * 125 + 125;
+			i2 = Math.sin(vEst.y/10*3.14) * 125 + 125;
 			ctx.fillStyle = `rgb(${i1}, ${250-i1}, ${i2})`;
 			ctx.beginPath();
 			ctx.arc(x, y, 0.1, 0, 6.29);
