@@ -112,8 +112,8 @@ function render() {
 	canvas_arrow(ctx, 0, 0, b[0].x, b[0].y);
 	ctx.strokeStyle = "#66f";
 	canvas_arrow(ctx, 0, 0, b[1].x, b[1].y);
-	for (let i = -12; i < 13; i++) {
-		for (let j = -12; j < 13; j++) {
+	for (let i = -15; i < 16; i++) {
+		for (let j = -15; j < 16; j++) {
 			const {x, y} = b1[0].mul(i).add(b1[1].mul(j));
 			const vEst = m.inv().mul(new Vec2(x, y));
 			i1 = Math.sin(vEst.x/10*3.14) * 125 + 125;
