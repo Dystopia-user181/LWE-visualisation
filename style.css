@@ -17,6 +17,7 @@ body {
 	border-radius: 10px;
 	background-color: #0008;
 	text-align: center;
+	user-select: none;
 }
 
 button {

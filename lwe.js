@@ -76,6 +76,10 @@ document.getElementById("switchbasis").addEventListener("change", () => {
 	reEstimate();
 	document.getElementById("basistext").innerText = `Current Basis: u1=(${b[0].x},${b[0].y}), u2=(${b[1].x},${b[1].y})`;
 });
+let drawLattice = true;
+document.getElementById("drawlattice").addEventListener("change", () => {
+	drawLattice = document.getElementById("drawlattice").checked;
+});
 let hold = false;
 c.addEventListener("mousedown", e => {
 	hold = true;
@@ -113,6 +117,7 @@ function render() {
 	ctx.strokeStyle = "#66f";
 	canvas_arrow(ctx, 0, 0, b[1].x, b[1].y);
 	for (let i = -15; i < 16; i++) {
+		if (!drawLattice) break;
 		for (let j = -15; j < 16; j++) {
 			const {x, y} = b1[0].mul(i).add(b1[1].mul(j));
 			const vEst = m.inv().mul(new Vec2(x, y));
