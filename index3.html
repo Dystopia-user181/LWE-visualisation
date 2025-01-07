@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>LWE visualisation</title>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<script defer src="lwe3.js"></script>
+	</head>
+	<body id="lwe2-body">
+		<br>
+		<div>
+			<button id="random-eq">Randomise equations</button>
+		</div>
+		<br>
+		<br>
+		<div id="equations"></div>
+		<br>
+		<br>
+		<div>Solved w/o errors: <span id="solved"></span></div>
+		<div style="height: 15px;"></div>
+		<div>Solved <span class="errors">w/ errors</span>: <span id="solved-err"></span></div>
+		<br>
+		<div>
+			<button id="random-eq2">Randomise bob's equation (Bit always set to 0)</button>
+		</div>
+		<br>
+		<div id="bob"></div>
+		<div>
+			Alice's result: <span id="a-est"></span>
+			<br>
+			Estimate using "solved" values of wxyz: <span id="me-est"></span>
+		</div>
+	</body>
+</html>

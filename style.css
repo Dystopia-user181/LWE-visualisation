@@ -35,7 +35,7 @@ button {
 	color: rgb(248, 79, 32);
 }
 
-#equations {
+#equations, #bob {
 	display: grid;
 	text-align: center;
 	grid-template-columns: 90px 30px 90px 30px 90px 30px 90px 30px 90px 90px auto;
