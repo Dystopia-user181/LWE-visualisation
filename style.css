@@ -38,5 +38,9 @@ button {
 #equations {
 	display: grid;
 	text-align: center;
-	grid-template-columns: 60px 30px 60px 30px 60px 30px 60px 30px 60px 60px auto;
+	grid-template-columns: 90px 30px 90px 30px 90px 30px 90px 30px 90px 90px auto;
+}
+
+#lwe2-body {
+	font-size: 30px;
 }

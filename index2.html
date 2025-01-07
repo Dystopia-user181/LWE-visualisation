@@ -5,7 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="style.css"/>
 		<script defer src="lwe2.js"></script>
 	</head>
-	<body>
+	<body id="lwe2-body">
 		<br>
 		<div>
 			<button id="random-eq">Randomise equations</button>
@@ -15,7 +15,9 @@
 		<br>
 		<div id="equations"></div>
 		<br>
+		<br>
 		<div>Solved w/o errors: <span id="solved"></span></div>
-		<div>Solved w/ errors: <span id="solved-err"></span></div>
+		<div style="height: 15px;"></div>
+		<div>Solved <span class="errors">w/ errors</span>: <span id="solved-err"></span></div>
 	</body>
 </html>
