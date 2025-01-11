@@ -125,6 +125,7 @@ let RHS = LHS.mul(s);
 const varname = "wxyz";
 
 function formatPM(u) {
+	if (u > m / 2) u = u - m;
 	if (u == 0) return "0";
 	return `${u > 0 ? "+" : "-"}${Math.abs(u)}`
 }
@@ -182,6 +183,7 @@ function updateEquations2() {
 	document.getElementById("a-est").innerHTML = `${al} --> "${bit(al)}"`;
 	let estimate = (LHS.inv().mul(RHS.add(E)).dot(BobLHS.add(E1)) - E2 - BobRHS + 3 * m) % m;
 	document.getElementById("me-est").innerHTML = `${estimate} --> "${bit(estimate)}"`;
+	document.getElementById("guess").style.display = "initial";
 }
 
 document.getElementById("random-eq2").addEventListener("click", () => {
