@@ -180,9 +180,9 @@ function updateEquations2() {
 	eqString += `<span class="errors">${formatPM(E2)}</span>`;
 	document.getElementById("bob").innerHTML = eqString;
 	let al = (s.dot(BobLHS.add(E1)) - E2 - BobRHS + 3 * m) % m;
-	document.getElementById("a-est").innerHTML = `${al} --> "${bit(al)}"`;
+	document.getElementById("a-est").innerHTML = `${al} --> Message = "${bit(al)}"`;
 	let estimate = (LHS.inv().mul(RHS.add(E)).dot(BobLHS.add(E1)) - E2 - BobRHS + 3 * m) % m;
-	document.getElementById("me-est").innerHTML = `${estimate} --> "${bit(estimate)}"`;
+	document.getElementById("me-est").innerHTML = `${estimate} --> Message = "${bit(estimate)}"`;
 	document.getElementById("guess").style.display = "initial";
 }
 
@@ -193,4 +193,20 @@ document.getElementById("random-eq2").addEventListener("click", () => {
 	E1.randomise(true);
 	E2 = (Math.floor(Math.random() * 7 - 3) + m) % m;
 	updateEquations2();
+});
+
+document.getElementById("random-eq3").addEventListener("click", () => {
+	let aliceFailed = 0, weFailed = 0;
+	for (let i = 0; i < 100; i++) {
+		u.randomise(true);
+		BobLHS = LHS.T.mul(u);
+		BobRHS = u.dot(RHS.add(E));
+		E1.randomise(true);
+		E2 = (Math.floor(Math.random() * 7 - 3) + m) % m;
+		updateEquations2();
+		aliceFailed += document.getElementById("a-est").innerHTML.slice(-2)[0] == "1";
+		weFailed += document.getElementById("me-est").innerHTML.slice(-2)[0] == "1";
+	}
+	document.getElementById("a-est").innerHTML = `Failed ${aliceFailed}/100 times`;
+	document.getElementById("me-est").innerHTML = `Failed ${weFailed}/100 times`;
 });
